@@ -10,7 +10,7 @@ Notes: I used cplusplus.com as a reference.
 
 //any #include, using namespace, and all function prototypes
 
-#include <iostream>													// included libraries
+#include <iostream>	// included libraries
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -18,12 +18,12 @@ Notes: I used cplusplus.com as a reference.
 
 using namespace std;
 
-void morseLibrary();												// void return type function(s)
+void morseLibrary();	// void return type function(s)
 void processMorseFile(ifstream& inFile, ofstream& outFile);
 void processEngFile(ifstream& inFile, ofstream& outFile);
 void openInputFile(ifstream&, string fname);
 void openOutputFile(ofstream&, string fname);
 
-string engToMorse(char ch);											// string return type function(s)
+string engToMorse(char ch);		// string return type function(s)
 
-char morseToEng(string morse);										// char return type function(s)
+char morseToEng(string morse);	// char return type function(s)

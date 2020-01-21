@@ -8,8 +8,8 @@ Description: This program converts english text from a .txt file to morse code i
 Notes: I used cplusplus.com as a reference.
 */
 
-													// every function definition except main
-#include "functions.h" 								// reads through prototypes in functions.h
+// every function definition except main
+#include "functions.h"		// reads through prototypes in functions.h
 
 string morseStrings[91];
 
@@ -65,11 +65,11 @@ void openOutputFile(ofstream& outFile, string fname){	// opens output file, chec
 string translateToMorse(char ch){
 	int ascii = (int)ch;
 	
-	if(ascii > 90){									// checks if char is lowercase, then converts to uppercase if need be
+	if(ascii > 90){		// checks if char is lowercase, then converts to uppercase if need be
 		ascii = ascii - 32;	
 	}
 	
-	string morse = morseStrings[ascii];				// assigns morse string to char
+	string morse = morseStrings[ascii];		// assigns morse string to char
 	
 	return morse;
 }
@@ -89,15 +89,15 @@ char translateToEng(string morse){
 	char engChar;
 	int ascii;
 	
-	for(int i = 0; i < 91; i++){						// searches through morseStrings array for a morse string that matches the input, returns ascii value of english char
+	for(int i = 0; i < 91; i++){		// searches through morseStrings array for a morse string that matches the input, returns ascii value of english char
 		if(morseStrings[i] == morse){
 			ascii = i;
 		}
 	}
 	
-	engChar = (char)ascii;							// converts ascii value to char
+	engChar = (char)ascii;		// converts ascii value to char
 	
-	if(morse == "&"){								// checks if morse string equals ampersand, chosen special character for a word space (since stringstream ignores whitespace)
+	if(morse == "&"){		// checks if morse string equals ampersand, chosen special character for a word space (since stringstream ignores whitespace)
 		engChar = ' ';
 	}
 	
@@ -129,7 +129,7 @@ void processMorseFile(ifstream& inFile, ofstream& outFile){
 	while(!inFile.eof()){
 		getline(inFile, line);
 		
-		for(int i = 0; i < line.size(); i++){			// places ampersand to mark a space between words
+		for(int i = 0; i < line.size(); i++){		// places ampersand to mark a space between words
 			if(line[i] == ' ' && line[i+1] == ' '){
 				line.insert(i+1, 1, '&');
 				dspace += 2;
@@ -149,7 +149,7 @@ void processMorseFile(ifstream& inFile, ofstream& outFile){
 				}
 			}
 			
-			outFile << endl;						// next line starts on new line, therefore counter increments
+			outFile << endl;	// next line starts on new line, therefore counter increments
 			newline++;
 		}
 	}
@@ -187,13 +187,13 @@ void processEngFile(ifstream& inFile, ofstream& outFile){
 		if(inFile.good()){
 			for(int i = 0; i <= line.size(); i++){
 				letter = line[i];
-				if(i == line.size()){					// indicates char at line's end (newline)
+				if(i == line.size()){		// indicates char at line's end (newline)
 					outFile << endl;
 					counter++;
-				} else if(letter == ' '){				// indicates space = new word, therefore second space added to morse
+				} else if(letter == ' '){		// indicates space = new word, therefore second space added to morse
 					outFile << " ";
 					counter++;
-				} else {								// indicates no space or endl, therefore is a letter that is translated to morse code w/ space to indicate separate letters
+				} else {		// indicates no space or endl, therefore is a letter that is translated to morse code w/ space to indicate separate letters
 					string output = translateToMorse(letter);
 					outFile << output;
 					if(i != line.size()-1){
@@ -222,7 +222,7 @@ void processEngFile(ifstream& inFile, ofstream& outFile){
  * Post: rest of code now knows ascii --> morse code translation
  *************************************************************/
 
-void morseLibrary(){									// stores every morse string within the morseStrings array
+void morseLibrary(){		// stores every morse string within the morseStrings array
 	morseStrings[65] = ".-";	//A
 	morseStrings[66] = "-...";	//B
 	morseStrings[67] = "-.-.";	//C
